@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styles';
 
-function Cards({ onClick }) {
+function Cards({ onClick}) {
   const card1 = 'https://image.tmdb.org/t/p/original/AusH8YTvTH660jU4q3x0ZHcl453.jpg'
   const card2 = 'https://image.tmdb.org/t/p/original/z3OBcmx8TXLoK3LTwAWIQ0j3wZ7.jpg'
   const card3 = 'https://image.tmdb.org/t/p/original/qqf5l6kxipzuUgzG1LRsZrE46qH.jpg'
@@ -16,8 +16,6 @@ function Cards({ onClick }) {
       <S.Card src={card4} />
       <S.Card src={card5} />
       <S.Card src={card6} />
-      <S.Card src={card3} />
-      <S.Card src={card5} />
 
       {/* <S.IconSearch /> */}
     </S.Container>
