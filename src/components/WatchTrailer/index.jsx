@@ -2,8 +2,7 @@ import React from 'react';
 import * as S from './styles'
 import * as C from '@/components/index'
 
-function WatchTrailer({ display, closeIcon, loading }) {
-  const ID_VIDEO = 'Ow_BHT3biQ8'
+function WatchTrailer({ display, closeIcon, loading, idVideo }) {
   return (
     <>
       {loading ?
@@ -12,11 +11,10 @@ function WatchTrailer({ display, closeIcon, loading }) {
           <iframe
             width="860"
             height="605"
-            src={`https://www.youtube.com/embed/${ID_VIDEO}`}
+            src={`https://www.youtube.com/embed/${idVideo}`}
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen={true}
           />
         </S.Container >
         :

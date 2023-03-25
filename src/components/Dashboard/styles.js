@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { Star } from "@styled-icons/boxicons-solid/Star";
 import { Heart } from "@styled-icons/evaicons-solid/Heart";
 import { Play } from "@styled-icons/foundation/Play";
+import { Random } from "@styled-icons/open-iconic/Random";
 
 const BUTTON = css`
   color: var(--white);
@@ -35,7 +36,6 @@ export const Container = styled.div`
   height: 768px;
   padding-bottom: 15px;
   clip-path: polygon(0% 0, 100% 0%, 100% calc(100% - 120px), 0% 100%);
-  
 `;
 
 export const Row = styled.div`
@@ -46,7 +46,6 @@ export const Row = styled.div`
   height: 768px;
   padding-bottom: 15px;
   clip-path: polygon(0% 0, 100% 0%, 100% calc(100% - 120px), 0% 100%);
-
 `;
 
 export const Content = styled.div`
@@ -82,7 +81,7 @@ export const Butttons = styled.div`
 `;
 export const Rated = styled.span`
   font-size: 1.5rem;
-  margin-right: 10px;
+  margin: 2px 10px 0 5px;
   color: var(--white);
 `;
 
@@ -130,3 +129,14 @@ export const LikedIcon = styled(Heart)`
 export const PlayIcon = styled(Play)`
   ${ICONSBUTTONS}
 `;
+
+export const RandomIcon = styled(Random)`
+  ${ICONSBUTTONS}
+  border-radius: 99px;
+  padding: 10px;
+  border: 1px solid #fff;
+  margin-left: 33px;
+  cursor: pointer;
+`;
+
+

@@ -22,7 +22,7 @@ function More({ display, onClick, background }) {
       const named = json.results.slice(0, `${slice}`)
       setNamedUser(named)
     }
-    fetchData()
+    // fetchData()
   }, [query])
 
   return (

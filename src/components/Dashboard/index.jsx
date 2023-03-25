@@ -1,59 +1,93 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { GlobalContext } from '@/hooks/useContext'
+import { useFetchTopRated, useFetchSearchMovies, useFetchMovie, useFetchImages } from '@/services/RequestsApi'
+import useFetch from '@/hooks/useFetch'
+
 import * as C from '@/components/index'
 import * as S from './styles';
+
 
 function Dashboard() {
 
   const [play, setPlay] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [current, setCurrent] = useState(0)
 
-  const description = `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
-  const imgBanner = 'https://image.tmdb.org/t/p/original/bLJTjfbZ1c5zSNiAvGYs1Uc82ir.jpg'
-  // const imgBanner = 'https://image.tmdb.org/t/p/original/9BBTo63ANSmhC4e6r62OJFuK2GL.jpg'
 
-  function playTrailer() {
+  const { request } = useFetch()
+
+  const { rated, fetchTopRated } = useFetchTopRated()
+  const { movies, fetchAllMovies } = useFetchSearchMovies()
+  const { movie, fetchMovie } = useFetchMovie()
+  const { images, fetchImage } = useFetchImages()
+
+  const { search, img_url } = useContext(GlobalContext)
+
+
+  useEffect(() => {
+    fetchTopRated(19)
+    const CurrentRandom = Math.floor(Math.random() * 19);
+    setCurrent(CurrentRandom)
+  }, [])
+
+
+  function playTrailer(e) {
+    e.preventDefault()
+    fetchMovie(rated[current]?.id)
+    console.log(movie?.videos?.results[current].key)
     setLoading(false)
     setPlay(!play)
     setTimeout(() => {
       setLoading(true)
     }, 500)
   }
-  function closeVideo() {
+
+  function closeVideo(e) {
+    e.preventDefault()
+    // fetchMovie(movie)
     setPlay(!play)
   }
 
+  function handleMovie() {
+    const CurrentRandom = Math.floor(Math.random() * 19);
+    setCurrent(CurrentRandom)
+    console.log(current)
+  }
   return (
     <>
-      <S.Container img={imgBanner}>
-        {/* <S.Banner src={imgBanner} /> */}
+      <S.Container img={img_url + "/" + rated[current]?.poster_path}>
         <S.Row>
           <S.Content>
-            <S.Title>Tomb Raider</S.Title>
+            <S.RandomIcon onClick={handleMovie} />
+            <S.Title>{rated[current]?.title}</S.Title>
             <S.RowInformation>
               <S.StarIcon />
-              <S.StarIcon />
-              <S.StarIcon />
-              <S.StarIcon rated />
-              <S.StarIcon rated />
-              {/* <S.Rated>97%</S.Rated> */}
-              <S.Year>2018</S.Year>
+              <S.Rated>{rated[current]?.vote_average}%</S.Rated>
+              <S.Year>{rated[current]?.release_date}</S.Year>
             </S.RowInformation>
             <S.Butttons>
               <S.AddFavorites>
                 <S.LikedIcon />
                 Add Wishlist
               </S.AddFavorites>
-              <S.WatchTrailer onClick={playTrailer}>
+              <S.WatchTrailer onClick={(e, idx) => playTrailer(e, idx)}>
                 <S.PlayIcon />
                 Watch Trailer</S.WatchTrailer>
             </S.Butttons>
-            <S.Description>{description}</S.Description>
+            <S.Description>{rated[current]?.overview}</S.Description>
           </S.Content>
         </S.Row>
       </S.Container>
-      <C.WatchTrailer display={play} closeIcon={closeVideo} loading={loading} />
+      <C.WatchTrailer
+        idVideo={movie?.videos?.results[0].key}
+        display={play}
+        closeIcon={closeVideo}
+        loading={loading} />
     </>
   )
 }
 
 export default Dashboard;
+
+{/* <S.Banner src={imgBanner} /> */ }
+// const imgBanner = 'https://image.tmdb.org/t/p/original/bLJTjfbZ1c5zSNiAvGYs1Uc82ir.jpg'

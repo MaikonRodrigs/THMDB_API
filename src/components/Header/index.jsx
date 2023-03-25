@@ -4,8 +4,6 @@ import * as C from '@/components/index'
 
 function Header() {
 
-  const imgLogo = 'https://logodownload.org/wp-content/uploads/2017/08/ancine-logo-6.png'
-
   return (
     <S.Container>
       <S.Row>
