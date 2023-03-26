@@ -7,8 +7,8 @@ export const useFetchTopRated = () => {
   const { request, data } = useFetch()
   const { URL, API_KEY, LANGUAGE, rated, setRated } = useContext(GlobalContext)
 
-  const fetchTopRated = useCallback(async (i = 5) => {
-    const { json } = await request(`${URL}/movie/popular${API_KEY}&language=${LANGUAGE}`)
+  const fetchTopRated = useCallback(async (i = 5, page = 1) => {
+    const { json } = await request(`${URL}movie/popular${API_KEY}&page=${page}&language=${LANGUAGE}`)
     const resulsrateds = json.results.slice(0, `${i}`)
     setRated(resulsrateds)
   }, [])

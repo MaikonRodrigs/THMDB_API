@@ -23,7 +23,9 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  width: 12rem;
+  font-size: 15px;
+  width: 15rem;
+  padding: 0 5px;
   background: transparent;
   color: var(--white);
   &::placeholder {

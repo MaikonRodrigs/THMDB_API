@@ -25,7 +25,7 @@ function Homepage() {
 
   useEffect(() => {
 
-    fetchTopRated(19)
+    fetchTopRated(19, 2)
     // RandomMovies()
     const CurrentRandom = Math.floor(Math.random() * 19);
     setCurrent(CurrentRandom)
