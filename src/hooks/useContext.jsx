@@ -3,13 +3,13 @@ import React, { createContext, useState } from "react";
 export const GlobalContext = createContext();
 
 export const UseDataContext = ({ children }) => {
-  const [search, setSearch] = useState("adao-negro");
+  const [search, setSearch] = useState("");
   const [openMovie, setOpenMovie] = useState(true)
   const [play, setPlay] = useState(false)
   const [loading, setLoading] = useState(false)
   const [current, setCurrent] = useState(0)
   const [updateBG, setUpdateBG] = useState(0)
-
+  const [openPlay, setOpenPlay] = useState(true)
 
   const [rated, setRated] = useState([])
   const [movies, setMovies] = useState([])
@@ -34,6 +34,7 @@ export const UseDataContext = ({ children }) => {
       setImages, images,
       setCurrent, current,
       setUpdateBG, updateBG,
+      setOpenPlay, openPlay,
       img_url,
       API_KEY,
       URL,

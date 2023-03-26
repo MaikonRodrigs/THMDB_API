@@ -4,6 +4,7 @@ import { Random } from "@styled-icons/open-iconic/Random";
 import { Heart } from "@styled-icons/evaicons-solid/Heart";
 import { Play2 } from "@styled-icons/icomoon/Play2";
 import { AddCircle } from "@styled-icons/fluentui-system-regular/AddCircle";
+import { Star } from "@styled-icons/boxicons-solid/Star";
 
 const LeftFade = keyframes`
   0% {width: 0 }
@@ -60,7 +61,7 @@ export const Row = styled.div`
   right: 0;
   bottom: 0;
   top: 0;
-
+  background: #83a4d4;
   background-image: url(${({ background }) => background});
   background-size: cover;
   background-repeat: no-repeat;
@@ -102,10 +103,10 @@ export const CloseIcon2 = styled(CloseCircleOutline)`
   color: white;
   cursor: pointer;
   position: absolute;
-  top: 330px;
-  right: 480px;
+  /* top: 310px;
+  right: 480px; */
 
-  top: 34%;
+  top: 30%;
   left: 51%;
   transform: translate(-50%, -50%);
 
@@ -200,7 +201,7 @@ export const Genres = styled.div`
   gap: 1rem;
   position: absolute;
   /* right: 396px; */
-  left: 174px;
+  left: 267px;
   top: 99px;
 `;
 
@@ -214,6 +215,28 @@ export const Description = styled.span`
   text-shadow: var(--text-shadow);
   padding: 20px 50px;
   backdrop-filter: blur(1rem);
+`;
+
+export const StarIcon = styled(Star)`
+  width: 20px;
+  color: orange;
+  margin-right: 4px;
+  cursor: pointer;
+  position: absolute;
+  right: 807px;
+  top: 103px;
+  &:hover {
+    color: orange;
+  }
+`;
+
+export const Rated = styled.span`
+  font-size: 1.5rem;
+  margin: 2px 10px 0px 5px;
+  color: var(--white);
+  position: absolute;
+  right: 743px;
+  top: 103px;
 `;
 
 // export const Contents = styled.section`

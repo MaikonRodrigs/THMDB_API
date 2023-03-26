@@ -1,11 +1,8 @@
 import React from 'react';
-import * as C from '@/components/index'
 import * as S from './styles';
 
 
-
-
-function TopRated({
+function TopRated({ 
   img, handleMovie, title, rating, year, playTrailer,
   description
 }) {
@@ -15,7 +12,7 @@ function TopRated({
       <S.Container img={img}>
         <S.Row>
           <S.Content>
-            <S.RandomIcon onClick={handleMovie} />
+            <S.RandomIcon onClick={handleMovie}/>
             <S.Title>{title}</S.Title>
             <S.RowInformation>
               <S.StarIcon />

@@ -1,18 +1,17 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as S from './styles';
-import { useFetchSearchMovies } from '@/services/RequestsApi'
 import { GlobalContext } from '@/hooks/useContext'
 
 
 function Search() {
   const { search, setSearch } = useContext(GlobalContext)
-  const { movies, fetchAllMovies } = useFetchSearchMovies()
-
+  const navigate = useNavigate()
 
   function onSubmit(e) {
     e.preventDefault()
-    fetchAllMovies(search)
-    console.log('submit')
+    navigate(`/search?id=${search}`)
+    setSearch('')
   }
 
 

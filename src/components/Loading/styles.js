@@ -1,6 +1,16 @@
 import styled, { keyframes } from "styled-components";
 import { CatchingPokemon } from "@styled-icons/material-outlined/CatchingPokemon";
 import { Heart } from "@styled-icons/fa-regular/Heart";
+import { Themoviedatabase } from "@styled-icons/simple-icons/Themoviedatabase";
+
+const Rotate = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
 
 const rotate360 = keyframes`
 	0% {
@@ -36,7 +46,7 @@ const BounceAnimation = keyframes`
   }
 `;
 
-export const Container = styled.section`
+export const Container = styled.div`
   display: flex;
   height: 100vh;
   width: 100%;
@@ -44,13 +54,20 @@ export const Container = styled.section`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(1rem);
-
+  backdrop-filter: blur(5rem);
+  
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background: black;
+`;
+
+export const LoadingTHMDB = styled(Themoviedatabase)`
+  color: #fff;
+  width: 60px;
+  animation: ${Rotate} 2s ease-in-out infinite;
+
 `;
 
 export const Wrapper = styled.div`

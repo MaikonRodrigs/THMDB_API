@@ -5,7 +5,7 @@ import * as S from './styles';
 import * as C from '@/components/index';
 
 
-function More({ idVideo, display, closeClick, randomClick,
+function More({ idVideo, display, closeClick, randomClick, rating,
   favoriteClick, playClick, addClick, background, title, description, colorFavoriteIcon, displayPlay
 }) {
   const { movie } = useContext(GlobalContext)
@@ -17,8 +17,10 @@ function More({ idVideo, display, closeClick, randomClick,
         <S.CloseIcon onClick={closeClick} />
         <S.RandomIcon onClick={randomClick} />
         <S.HeartIcon onClick={favoriteClick} colorFavoriteIcon={colorFavoriteIcon} />
-        <S.AddCircleIcon onClick={addClick}/>
+        <S.AddCircleIcon onClick={addClick} />
         <S.Title>{title}</S.Title>
+        <S.StarIcon />
+        <S.Rated>{rating}%</S.Rated>
         <S.Genres>
           {genres && (
             (genres.map(item => (
@@ -26,20 +28,16 @@ function More({ idVideo, display, closeClick, randomClick,
             )))
           )}
         </S.Genres>
-        {!idVideo === undefined && (
-          <h1>Nao localizado</h1>
-        )}
-        {idVideo && (
-          <S.IFRAME
-            displayPlay={displayPlay}
-            width="550"
-            height="360"
-            src={`https://www.youtube.com/embed/${idVideo}`}
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          />
-        )}
+        {movie.lenght === 0 && <C.THMDB />}
+        <S.IFRAME
+          displayPlay={displayPlay}
+          width="550"
+          height="360"
+          src={`https://www.youtube.com/embed/${idVideo}`}
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        />
         <S.Description>{description}</S.Description>
         <S.Play2Icon onClick={playClick} displayPlay={displayPlay} />
         <S.CloseIcon2 displayPlay={displayPlay} onClick={playClick} />

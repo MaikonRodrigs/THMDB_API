@@ -3,6 +3,7 @@ import { Star } from "@styled-icons/boxicons-solid/Star";
 import { Heart } from "@styled-icons/evaicons-solid/Heart";
 import { Play } from "@styled-icons/foundation/Play";
 import { Random } from "@styled-icons/open-iconic/Random";
+import { LeftArrowAlt } from "@styled-icons/boxicons-solid/LeftArrowAlt";
 
 const BUTTON = css`
   color: var(--white);
@@ -137,6 +138,9 @@ export const RandomIcon = styled(Random)`
   border: 1px solid #fff;
   margin-left: 33px;
   cursor: pointer;
+  &:hover {
+    color: greenyellow;
+    border: 1px solid greenyellow;
+  }
 `;
-
 

@@ -8,14 +8,14 @@ import { useFetchTopRated, useFetchSearchMovies, useFetchMovie } from '@/service
 
 
 function Homepage() {
-  const [openPlay, setOpenPlay] = useState(true)
   const {
     img_url,
     openMovie, setOpenMovie,
     play, setPlay,
     loading, setLoading,
     current, setCurrent,
-    updateBG, setUpdateBG
+    updateBG, setUpdateBG,
+    openPlay, setOpenPlay
   } = useContext(GlobalContext)
 
 
@@ -24,10 +24,12 @@ function Homepage() {
   const { movie, fetchMovie } = useFetchMovie()
 
   useEffect(() => {
+
     fetchTopRated(19)
-    RandomMovies()
+    // RandomMovies()
     const CurrentRandom = Math.floor(Math.random() * 19);
     setCurrent(CurrentRandom)
+
   }, [])
 
   function RandomMovies() {
@@ -44,20 +46,19 @@ function Homepage() {
   function playTrailer(e) {
     e.preventDefault()
     fetchMovie(rated[current]?.id)
-    setLoading(false)
+    setLoading(true)
     setPlay(!play)
     setTimeout(() => {
-      setLoading(true)
-    }, 500)
+      setLoading(false)
+    }, 1500)
   }
+
   function moviePlayTrailer() {
     setOpenPlay(!openPlay)
   }
 
   function closeTrailer() {
     setPlay(!play)
-    setOpenPlay(!openPlay)
-
   }
 
   function closeModal() {
@@ -68,12 +69,8 @@ function Homepage() {
   }
 
   function showModal(id) {
-    setLoading(false)
     setOpenMovie(!openMovie)
     movieIdOpen(id)
-    setTimeout(() => {
-      setLoading(true)
-    }, 2500)
   }
 
   function movieIdOpen(id) {
@@ -83,19 +80,24 @@ function Homepage() {
   function randomBackground() {
     const update = Math.floor(Math.random() * 5);
     setUpdateBG(update)
-    console.log(updateBG)
   }
 
   function handleTMDB(id) {
-    window.open(`https://www.themoviedb.org/movie/${id} target="_blank"`)
+    setLoading(true)
+    setTimeout(() => {
+      window.open(`https://www.themoviedb.org/movie/${id} target="_blank"`)
+      setLoading(false)
+    }, 1500)
   }
 
-  // const banner = 'https://image.tmdb.org/t/p/original//mbYQLLluS651W89jO7MOZcLSCUw.jpg'
+  if (loading) {
+    return (<C.THMDB />)
+  }
+
   return (
     <>
       <S.Container>
         <S.FirstSeaction>
-          <C.Header />
           <C.TopRated
             img={img_url + "/" + rated[current]?.poster_path}
             handleMovie={handleMovie}
@@ -128,6 +130,7 @@ function Homepage() {
             <C.More
               title={movie?.title}
               description={movie?.overview}
+              rating={movie?.vote_average}
               idVideo={movie?.videos?.results[0]?.key || ''}
               display={openMovie}
               displayPlay={openPlay}

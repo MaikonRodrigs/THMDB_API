@@ -11,3 +11,12 @@ export function Loading() {
     </S.Container>
   );
 }
+
+
+export function THMDB() {
+  return (
+    <S.Container>
+      <S.LoadingTHMDB />
+    </S.Container>
+  );
+}
