@@ -9,6 +9,7 @@ export const useFetchTopRated = () => {
 
   const fetchTopRated = useCallback(async (i = 5, page = 1) => {
     const { json } = await request(`${URL}movie/popular${API_KEY}&page=${page}&language=${LANGUAGE}`)
+    let results = json
     const resulsrateds = json.results.slice(0, `${i}`)
     setRated(resulsrateds)
   }, [])

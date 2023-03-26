@@ -8,6 +8,7 @@ import { useFetchTopRated, useFetchSearchMovies, useFetchMovie } from '@/service
 
 
 function Homepage() {
+  const [currentPage, setCurrentPage] = useState(1)
   const {
     img_url,
     openMovie, setOpenMovie,
@@ -19,18 +20,18 @@ function Homepage() {
   } = useContext(GlobalContext)
 
 
-  const { rated, fetchTopRated, data } = useFetchTopRated()
+  const { rated, fetchTopRated, data, results } = useFetchTopRated()
   const { movies, fetchAllMovies } = useFetchSearchMovies()
   const { movie, fetchMovie } = useFetchMovie()
 
   useEffect(() => {
 
-    fetchTopRated(19, 2)
+    fetchTopRated(16, currentPage)
     // RandomMovies()
-    const CurrentRandom = Math.floor(Math.random() * 19);
+    const CurrentRandom = Math.floor(Math.random() * 16);
     setCurrent(CurrentRandom)
 
-  }, [])
+  }, [currentPage])
 
   function RandomMovies() {
     setInterval(() => {
@@ -39,7 +40,7 @@ function Homepage() {
   }
 
   function handleMovie() {
-    const CurrentRandom = Math.floor(Math.random() * 19);
+    const CurrentRandom = Math.floor(Math.random() * 16);
     setCurrent(CurrentRandom)
   }
 
@@ -90,6 +91,21 @@ function Homepage() {
     }, 1500)
   }
 
+  function previousPage() {
+    if (currentPage <= 1) return;
+    const page = currentPage - 1
+    setCurrentPage(page)
+    fetchTopRated(16, currentPage)
+    console.log(currentPage)
+  }
+
+  function nextPage() {
+    const page = currentPage + 1
+    setCurrentPage(page)
+    fetchTopRated(16, currentPage)
+    console.log(currentPage)
+  }
+
   if (loading) {
     return (<C.THMDB />)
   }
@@ -108,6 +124,7 @@ function Homepage() {
             description={rated[current]?.overview}
           />
         </S.FirstSeaction>
+        <C.Pagination onClickPrevious={previousPage} onClickNext={nextPage} />
         <S.Cards>
           {data && (
             (rated.map((item) => (

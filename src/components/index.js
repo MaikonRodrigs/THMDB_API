@@ -7,6 +7,7 @@ import Cards from "./Cards";
 import More from "./More";
 import Tips from "./Tips";
 import WatchTrailer from "./WatchTrailer";
+import Pagination from "./Pagination";
 import { Loading, THMDB } from "./Loading";
 
 export {
@@ -16,9 +17,10 @@ export {
   TopRated,
   Movies,
   Cards,
-  More, 
+  More,
   Tips,
   WatchTrailer,
+  Pagination,
   Loading,
-  THMDB
+  THMDB,
 };
