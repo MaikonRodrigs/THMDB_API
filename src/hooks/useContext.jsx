@@ -1,11 +1,20 @@
 import React, { createContext, useState } from "react";
-import useFetch from '@/hooks/useFetch'
 
 export const GlobalContext = createContext();
 
 export const UseDataContext = ({ children }) => {
   const [search, setSearch] = useState("adao-negro");
-  
+  const [openMovie, setOpenMovie] = useState(true)
+  const [play, setPlay] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [current, setCurrent] = useState(0)
+  const [updateBG, setUpdateBG] = useState(0)
+
+
+  const [rated, setRated] = useState([])
+  const [movies, setMovies] = useState([])
+  const [movie, setMovie] = useState({})
+  const [images, setImages] = useState({})
 
   const URL = import.meta.env.VITE_API_URL
   const API_KEY = import.meta.env.VITE_API_KEY
@@ -15,8 +24,16 @@ export const UseDataContext = ({ children }) => {
 
   return (
     <GlobalContext.Provider value={{
-      search,
-      setSearch,
+      setSearch, search,
+      setOpenMovie, openMovie,
+      setPlay, play,
+      setLoading, loading,
+      setRated, rated,
+      setMovies, movies,
+      setMovie, movie,
+      setImages, images,
+      setCurrent, current,
+      setUpdateBG, updateBG,
       img_url,
       API_KEY,
       URL,

@@ -44,7 +44,8 @@ export const Container = styled.section`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(1rem);
 
   position: absolute;
   top: 50%;
