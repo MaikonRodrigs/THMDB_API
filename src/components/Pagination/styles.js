@@ -20,6 +20,7 @@ export const Next = styled(ArrowRightCircle)`
   cursor: pointer;
   color: #fff;
   z-index: 999;
+  margin-left: 10px;
   &:hover {
     color: orange;
   }
