@@ -38,16 +38,15 @@ function Header() {
   function removeFavorite(i) {
     const arr = favorites.filter((item, idx) => idx !== i);
     setFavorites(arr)
-    console.log(arr)
     if (favorites.length === 1) {
       localStorage.clear()
-      location.reload()
+      // location.reload()
     }
   }
 
   function clearCache() {
     localStorage.clear()
-    location.reload()
+    // location.reload()
     setFavorites([])
   }
 
@@ -65,9 +64,7 @@ function Header() {
     } else if (getFav.length === 0) {
       return <S.NotInterestedIcon />
     }
-    console.log(favorites)
   }
-
 
   if (loading) {
     return (<C.THMDB />)
