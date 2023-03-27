@@ -5,11 +5,11 @@ export const Container = styled.div`
   flex: 1;
   justify-content: space-between;
   align-items: center;
-  margin: 0 2rem;
+  margin: 0 20px;
 `;
 
 export const Avatar = styled.img`
-  width: 3.5rem;
+  width: 35px;
   border-radius: 9999px;
   cursor: pointer;
 `;

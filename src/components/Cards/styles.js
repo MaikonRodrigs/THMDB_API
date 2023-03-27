@@ -19,7 +19,7 @@ export const IconSearch = styled(Themoviedatabase)`
 export const Skeletoon = styled.div`
   width: 150px;
   height: 225px;
-  border-radius: 1.4rem;
+  border-radius: 14px;
   cursor: pointer;
   box-shadow: var(--shadow);
   transition: 0.2s ease-out;
@@ -29,13 +29,11 @@ export const Skeletoon = styled.div`
 
 export const Card = styled.img`
   width: 150px;
-  border-radius: 1.4rem;
+  border-radius: 14px;
   cursor: pointer;
   box-shadow: var(--shadow);
   transition: all 0.2s ease-out;
   background-color: gray;
-  /* animation: ${CardHover} 1.4s cubic-bezier(.455,.03,.515,.955) both; */
-
   &:hover {
     margin-top: -16px;
   }

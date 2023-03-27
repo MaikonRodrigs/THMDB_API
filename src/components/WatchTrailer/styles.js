@@ -4,14 +4,11 @@ import { CloseCircleOutline } from "@styled-icons/evaicons-outline/CloseCircleOu
 export const Container = styled.div`
   display: ${({ display }) => (display ? "flex" : "none")};
   flex: 1;
-  backdrop-filter: blur(1rem);
+  backdrop-filter: blur(10px);
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
-  width: 100vmax;
   margin: 0 auto;
-
   position: fixed;
   inset: 0;
   z-index: 999;

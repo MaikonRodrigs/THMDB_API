@@ -8,12 +8,14 @@ const FadeAppear = keyframes`
   from { opacity: 0} to { opacity: 1}
 `;
 
+export const DeleteFavorites = styled.div``;
+
 export const Container = styled.div`
   position: relative;
   width: 100%;
   z-index: 3;
   position: fixed;
-  padding: 1.5rem 1rem;
+  padding: 15px 10px;
   display: sticky;
   background: transparent;
 `;
@@ -28,21 +30,23 @@ export const Row = styled.div`
 `;
 
 export const RowImage = styled.div`
-  margin-left: 2rem;
-  cursor: pointer;
+  margin-left: 20px;
+  cursor: 
+  pointer;
 `;
 export const Image = styled.img`
-  width: 10rem;
+  width: 10px;
   height: auto;
 `;
+
 export const RowSearchAndProfile = styled.div`
-  margin-right: 3rem;
+  margin-right: 30px;
   display: flex;
   justify-content: space-between;
 `;
 
 export const Logo = styled(Themoviedatabase)`
-  width: 5rem;
+  width: 50px;
   height: auto;
   color: white;
   text-shadow: var(--text-shadow);
@@ -77,13 +81,11 @@ export const ContainerFavorite = styled.div`
   width: 300px;
   max-height: 700px;
   overflow: auto;
-  /* height: auto; */
   background-color: #fff;
   border-radius: 8px;
   position: absolute;
   top: 70px;
   box-shadow: var(--shadow);
-
   animation: ${FadeAppear} 1s ease-in-out;
 `;
 
@@ -94,11 +96,7 @@ export const NotInterestedIcon = styled(HeartDislikeCircle)`
   flex-direction: row;
   margin: 0 auto;
   padding: 44px 0;
-
   width: 40px;
   color: red;
 `;
 
-export const DeleteFavorites = styled.div`
-
-`;

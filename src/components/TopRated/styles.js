@@ -8,14 +8,14 @@ import { Add } from "@styled-icons/fluentui-system-filled/Add";
 
 const BUTTON = css`
   color: var(--white);
-  border: 0.1rem solid var(--white);
-  padding: 1rem 4rem;
+  border: 1px solid var(--white);
+  padding: 10px 40px;
   text-transform: uppercase;
   border-radius: 999px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 10px;
   &:hover {
     border: 1px solid var(--white);
     background: rgba(255, 255, 255, 0.1);
@@ -42,9 +42,8 @@ export const Container = styled.div`
 
 export const Row = styled.div`
   position: relative;
-  backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(5px);
   background-color: rgba(0, 0, 0, 0.7);
-  /* width: 99.9vmax; */
   height: 768px;
   padding-bottom: 15px;
   clip-path: polygon(0% 0, 100% 0%, 100% calc(100% - 120px), 0% 100%);
@@ -53,21 +52,17 @@ export const Row = styled.div`
 export const Content = styled.div`
   max-width: 1366px;
   margin: 0 auto;
-  padding-top: 20rem;
+  padding-top: 200px;
 `;
 
 export const Title = styled.h1`
   text-transform: capitalize;
   z-index: 11;
-
   font-size: 60px;
   font-weight: 600;
-  /* word-break: keep-all; */
-  /* word-wrap: normal; */
   opacity: 0.5;
   color: rgba(255, 255, 255, 0.7);
   margin-left: 33px;
-
   white-space: nowrap;
   width: 1283px;
   overflow: hidden;
@@ -89,19 +84,19 @@ export const Butttons = styled.div`
   margin-left: 40px;
   margin-top: 20px;
   display: flex;
-  gap: 2rem;
+  gap: 20px;
 `;
 export const Rated = styled.span`
-  font-size: 1.5rem;
+  font-size: 15px;
   margin: 2px 10px 0 5px;
   color: var(--white);
 `;
 
 export const Year = styled.span`
   border: 1px solid var(--white);
-  padding: 0.3rem 2rem;
+  padding: 3px 20px;
   border-radius: 99px;
-  font-size: 1.5rem;
+  font-size: 15px;
   color: var(--white);
   margin-left: 10px;
 `;
@@ -114,7 +109,7 @@ export const WatchTrailer = styled.button`
 `;
 
 export const Description = styled.span`
-  font-size: 1.5rem;
+  font-size: 15px;
   display: block;
   margin-left: 40px;
   text-align: left;
@@ -122,7 +117,6 @@ export const Description = styled.span`
   color: white;
   margin-top: 20px;
   height: 35px;
-
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;

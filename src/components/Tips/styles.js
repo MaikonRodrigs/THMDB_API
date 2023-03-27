@@ -8,11 +8,9 @@ export const TipsDot = styled.div`
   padding: 5px 20px;
   text-transform: uppercase;
   cursor: pointer;
-  backdrop-filter: blur(1rem);
-
+  backdrop-filter: blur(10px);
   &:hover {
     background: #fff;
     color: #000;
   }
-
 `;

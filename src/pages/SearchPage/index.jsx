@@ -2,14 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import * as S from './styles';
 import * as C from '@/components/index';
-
 import { GlobalContext } from '@/hooks/useContext'
 import { useFetchSearchMovies, useFetchMovie } from '@/services/RequestsApi'
-import { MoviesAndTv } from 'styled-icons/fluentui-system-regular';
-
 
 function Search() {
-
+  
   const { data, movies, fetchAllMovies } = useFetchSearchMovies()
   const { movie, fetchMovie } = useFetchMovie()
 
@@ -25,6 +22,7 @@ function Search() {
     setIsFavorite, isFavorite,
     setCurrentFavorite, currentFavorite,
   } = useContext(GlobalContext)
+
   const [setParams] = useSearchParams()
   const query = setParams.get('id')
   const navigate = useNavigate()
@@ -32,7 +30,6 @@ function Search() {
   useEffect(() => {
     fetchAllMovies(query, 16)
     setIsFavorite(false)
-    console.log(isFavorite)
   }, [query])
 
   useEffect(() => {

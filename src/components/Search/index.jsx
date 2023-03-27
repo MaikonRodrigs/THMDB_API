@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import * as S from './styles';
+import { useNavigate } from 'react-router-dom';
 import { GlobalContext } from '@/hooks/useContext'
 
 
@@ -13,7 +13,6 @@ function Search() {
     navigate(`/search?id=${search}`)
     setSearch('')
   }
-
 
   return (
     <S.Form onSubmit={onSubmit}>

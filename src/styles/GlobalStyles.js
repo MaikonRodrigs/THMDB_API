@@ -25,11 +25,10 @@ html, border-style, #root {
     
     html {
         background: var(--gray-light);
-        /* background: rgb(146, 209, 180); */
-        /* background: linear-gradient(to top, #83a4d4, #b6fbff); */
         transition: background .3s ease-in-out;
         color: var(--secondary);
     }
+    
     :root {
     --primary: #000;
     --secondary: #15181C;
@@ -37,7 +36,6 @@ html, border-style, #root {
     --black: #3c3c3c;
     --gray: #7A7A7A;
     --gray-light: #f2f2f2;
-
     --error: #ED6A5E;
     --shadow: 14px 22px 49px -18px rgba(0, 0, 0, 0.75);
     --text-shadow: 0 0 12px rgba(0,0,0,.25);

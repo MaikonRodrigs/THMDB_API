@@ -1,9 +1,7 @@
 import React, { useContext, useEffect } from 'react';
-
-import { GlobalContext } from '@/hooks/useContext'
 import * as S from './styles';
 import * as C from '@/components/index';
-
+import { GlobalContext } from '@/hooks/useContext'
 
 function More({ idVideo, display, closeClick, randomClick, rating,
   favoriteClick, playClick, addClick, background, title, description, colorFavoriteIcon = false, displayPlay

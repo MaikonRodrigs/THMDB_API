@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as S from './styles';
 import * as C from '@/components/index'
 import { useFetchMovie } from '@/services/RequestsApi'
-
-import { useNavigate } from 'react-router-dom';
-
 import { GlobalContext } from '@/hooks/useContext'
 
 function Header() {
@@ -16,8 +14,8 @@ function Header() {
   const getFav = (JSON.parse(localStorageFavorite))
 
   const { movie, fetchMovie } = useFetchMovie()
-
   const navigate = useNavigate()
+
 
   function handleHomePage() {
     navigate(`/`)
@@ -40,13 +38,11 @@ function Header() {
     setFavorites(arr)
     if (favorites.length === 1) {
       localStorage.clear()
-      // location.reload()
     }
   }
 
   function clearCache() {
     localStorage.clear()
-    // location.reload()
     setFavorites([])
   }
 
@@ -82,8 +78,6 @@ function Header() {
           <C.Profile />
           <S.ContainerFavorite display={display}>
             {getIsNull()}
-
-
             {favorites && getFav && (
               favorites?.map((items, idx) => (
                 <C.Favorites
@@ -96,7 +90,6 @@ function Header() {
                 />
               ))
             )}
-
             {getFav && favorites.length < 1 && (
               <C.Favorites
                 key={getFav?.id}
@@ -107,51 +100,6 @@ function Header() {
                 cardClick={() => showModal(getFav?.id)}
               />
             )}
-
-
-            {/* {favorites.length >= 1 || favorites.length != 0 ?
-              favorites?.map((items, idx) => (
-                <C.Favorites
-                  key={items?.id}
-                  title={items?.title}
-                  src={img_url + items?.poster_path}
-                  moreClick={() => handleTMDB(items?.id)}
-                  cardClick={() => showModal(items?.id)}
-                  removeClick={() => removeFavorite(idx)}
-                />
-              ))
-              :
-              <C.Favorites
-                key={getFav?.id}
-                title={getFav?.title}
-                src={img_url + getFav?.poster_path}
-                removeClick={clearCache}
-                moreClick={() => handleTMDB(getFav?.id)}
-                cardClick={() => showModal(getFav?.id)}
-              />
-            } */}
-
-            {/* ///////// */}
-
-            {/* {getFav ?
-              <C.Favorites
-                key={getFav?.id}
-                title={getFav?.title}
-                src={img_url + getFav?.poster_path}
-                removeClick={() => removeFavorite(getFav.id)}
-                moreClick={() => handleTMDB(getFav?.id)}
-              />
-              :
-              favorites?.map((items, idx) => (
-                <C.Favorites
-                  key={items?.id}
-                  title={items?.title}
-                  src={img_url + items?.poster_path}
-                  removeClick={() => removeFavorite(idx)}
-                  moreClick={() => handleTMDB(items?.id)}
-                />
-              ))
-            } */}
             <S.DeleteFavorites />
           </S.ContainerFavorite>
         </S.RowSearchAndProfile>

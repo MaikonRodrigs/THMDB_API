@@ -2,12 +2,8 @@ import styled, { keyframes } from "styled-components";
 import * as ICON from "@styled-icons/evil/Search";
 
 const focusInput = keyframes`
-  0% {
-    width: 12rem;
-  }
-  100% {
-    width: 20rem;
-  }
+  0% { width: 120px}
+  100% { width: 200px }
 `;
 
 export const Container = styled.div``;
@@ -15,7 +11,7 @@ export const Container = styled.div``;
 export const Form = styled.form`
   border: 1px solid var(--white);
   border-radius: 999px;
-  padding: 0.5rem 1rem;
+  padding: 5px 10px;
   display: flex;
   align-items: center;
   &:focus {
@@ -24,22 +20,21 @@ export const Form = styled.form`
 
 export const Input = styled.input`
   font-size: 15px;
-  width: 15rem;
+  width: 150px;
   padding: 0 5px;
   background: transparent;
   color: var(--white);
   &::placeholder {
     color: var(--white);
   }
-
   &:focus {
-    width: 20rem;
+    width: 200px;
     animation: ${focusInput} 0.3s linear;
   }
 `;
 
 export const SearchIcon = styled(ICON.Search)`
-  width: 2rem;
+  width: 20px;
   color: var(--white);
   cursor: pointer;
 `;

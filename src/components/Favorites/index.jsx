@@ -1,5 +1,4 @@
 import React from 'react';
-
 import * as S from './styles';
 
 function Favorites({ src, title, moreClick, removeClick, cardClick }) {

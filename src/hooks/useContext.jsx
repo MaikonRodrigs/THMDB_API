@@ -10,11 +10,9 @@ export const UseDataContext = ({ children }) => {
   const [current, setCurrent] = useState(0)
   const [updateBG, setUpdateBG] = useState(0)
   const [openPlay, setOpenPlay] = useState(true)
-
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(null);
-
   const [rated, setRated] = useState([])
   const [movies, setMovies] = useState([])
   const [movie, setMovie] = useState({})

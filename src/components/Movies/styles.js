@@ -5,6 +5,7 @@ import { Play } from "@styled-icons/foundation/Play";
 import { LeftArrowAlt } from "@styled-icons/boxicons-solid/LeftArrowAlt";
 import { Search } from "@styled-icons/evil/Search";
 
+export const SectionResults = styled.div``;
 
 export const Container = styled.div`
   background-image: url(${({ img }) => img});
@@ -21,9 +22,8 @@ export const Container = styled.div`
 
 export const Row = styled.div`
   position: relative;
-  backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(5px);
   background-color: rgba(0, 0, 0, 0.7);
-  /* width: 99.9vmax; */
   height: 768px;
   padding-bottom: 15px;
   clip-path: polygon(0% 0, 100% 0%, 100% calc(100% - 120px), 0% 100%);
@@ -32,7 +32,7 @@ export const Row = styled.div`
 export const Content = styled.div`
   max-width: 1366px;
   margin: 0 auto;
-  padding-top: 20rem;
+  padding-top: 200px;
 `;
 
 export const Title = styled.h1`
@@ -40,17 +40,13 @@ export const Title = styled.h1`
   z-index: 11;
   font-size: 60px;
   font-weight: 600;
-  /* word-break: keep-all; */
-  /* word-wrap: normal; */
   opacity: 0.5;
   color: rgba(255, 255, 255, 0.7);
   margin-left: 33px;
 `;
 
-
 export const Description = styled.span`
-  font-size: 1.5rem;
-
+  font-size: 15px;
   margin-left: 10px;
   text-align: left;
   width: 60%;
@@ -67,7 +63,6 @@ export const LeftIcon = styled(LeftArrowAlt)`
   margin-left: 33px;
   margin-right: -15px;
   cursor: pointer;
-
   &:hover {
     color: orange;
     border: 1px solid orange;
@@ -75,20 +70,16 @@ export const LeftIcon = styled(LeftArrowAlt)`
 `;
 
 export const SearchIcon = styled(Search)`
-  width: 2.5rem;
+  width: 25px;
   color: var(--white);
   cursor: pointer;
   margin-left: 33px;
-
-  /* margin-right: 20px; */
 `;
 
 export const SearchRow = styled.div`
   display: flex;
   align-items: center;
 `;
-
-export const SectionResults = styled.div``;
 
 export const SearchItems = styled.div`
   display: flex;

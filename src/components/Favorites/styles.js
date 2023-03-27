@@ -6,6 +6,9 @@ const FadeAppear = keyframes`
   from { opacity: 0} to { opacity: 1}
 `;
 
+export const Row = styled.div``;
+export const Icons = styled.div``;
+
 export const Container = styled.div`
   display: ${({ display }) => (display ? "unset" : "none")};
   width: 300px;
@@ -16,11 +19,9 @@ export const Container = styled.div`
   position: absolute;
   top: 70px;
   box-shadow: var(--shadow);
-
   animation: ${FadeAppear} 1s ease-in-out;
-`;
+  `;
 
-export const Row = styled.div``;
 export const Title = styled.div`
   font-size: 14px;
   text-align: right;
@@ -28,6 +29,7 @@ export const Title = styled.div`
   text-shadow: var(--text-shadow);
   font-weight: bold;
 `;
+
 export const Card = styled.img`
   background: gray;
   background-image: url(${({ img }) => img});
@@ -35,12 +37,12 @@ export const Card = styled.img`
   height: 120px;
   border-radius: 8px;
   box-shadow: var(--shadow);
-
   cursor: pointer;
   &:hover {
     opacity: 0.9;
   }
 `;
+
 export const RowCard = styled.div`
   display: flex;
   flex-direction: row;
@@ -56,8 +58,6 @@ export const RowIcons = styled.div`
   align-items: flex-end;
 `;
 
-export const Icons = styled.div``;
-
 export const AddCircleIcon = styled(AddCircle)`
   width: 20px;
   color: #000000;
@@ -66,6 +66,7 @@ export const AddCircleIcon = styled(AddCircle)`
     opacity: 0.7;
   }
 `;
+
 export const TrashIcon = styled(Trash)`
   width: 20px;
   color: red;

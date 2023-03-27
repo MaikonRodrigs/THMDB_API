@@ -4,10 +4,9 @@ import { ArrowLeftCircle } from "@styled-icons/bootstrap/ArrowLeftCircle";
 
 export const Container = styled.div`
   display: flex;
-  gap: 1rem;
+  gap: 1px;
   margin-left: 8px;
   margin-top: 50px;
-  /* margin-top: 26px; */
   margin-bottom: 50px;
   align-items: center;
   position: relative;
@@ -42,12 +41,9 @@ export const Page = styled.div`
   width: 6px;
   height: 6px;
   padding: 10px;
-
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 999px;
   margin-left: 20px;
-  /* position: absolute;
-  right: 30px; */
 `;

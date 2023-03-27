@@ -1,5 +1,4 @@
 import React from 'react';
-
 import * as S from './styles';
 
 export function Loading() {
@@ -11,7 +10,6 @@ export function Loading() {
     </S.Wrapper>
   );
 }
-
 
 export function THMDB() {
   return (

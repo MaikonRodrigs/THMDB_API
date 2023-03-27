@@ -13,9 +13,8 @@ export const Cards = styled.div`
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto auto;
   grid-auto-columns: auto;
-  gap: 2rem;
+  gap: 20px;
   max-width: 1366px;
-  /* width: 1280px; */
   margin: 55px auto 0px;
   justify-content: start;
   justify-items: start;
@@ -24,7 +23,14 @@ export const Cards = styled.div`
   @media screen and (max-width: 1200px) {
     grid-template-columns: auto auto auto auto auto auto;
     margin-left: 40px;
-    gap: 1.2rem;
-    row-gap: 5rem;
+    gap: 12px;
+    row-gap: 50px;
+  }
+  
+  @media screen and (max-width: 600px) {
+    grid-template-columns: auto auto;
+    margin: 0 auto;
+    gap: 12px;
+    row-gap: 50px;
   }
 `;

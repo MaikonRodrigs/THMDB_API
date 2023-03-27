@@ -1,14 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
-
-import * as C from '@/components/index';
+import { useNavigate } from 'react-router-dom';
 import * as S from './styles'
-
+import * as C from '@/components/index';
 import { GlobalContext } from '@/hooks/useContext'
 import { useFetchTopRated, useFetchSearchMovies, useFetchMovie } from '@/services/RequestsApi'
-import { useNavigate } from 'react-router-dom';
 
 function Homepage() {
+
   const [currentPage, setCurrentPage] = useState(1)
+
+  const { movie, fetchMovie } = useFetchMovie()
+  const { rated, fetchTopRated, data, results } = useFetchTopRated()
+  const { movies, fetchAllMovies } = useFetchSearchMovies()
 
   const {
     img_url,
@@ -24,13 +27,8 @@ function Homepage() {
     setCurrentFavorite, currentFavorite
   } = useContext(GlobalContext)
 
-
-  const { rated, fetchTopRated, data, results } = useFetchTopRated()
-  const { movies, fetchAllMovies } = useFetchSearchMovies()
-  const { movie, fetchMovie } = useFetchMovie()
   const navigate = useNavigate()
   const numberpage = currentPage.toString()
-
 
   useEffect(() => {
 
@@ -113,15 +111,13 @@ function Homepage() {
     const page = currentPage - 1
     setCurrentPage(page)
     fetchTopRated(16, currentPage)
-    console.log(currentPage)
+
   }
 
   function nextPage() {
     const page = currentPage + 1
     setCurrentPage(page)
     fetchTopRated(16, currentPage)
-    console.log(currentPage.toString())
-    console.log(currentPage)
     navigate(`/?page=${currentPage}`)
   }
 
@@ -191,7 +187,6 @@ function Homepage() {
         )}
       </S.Container>
     </>
-
   )
 }
 

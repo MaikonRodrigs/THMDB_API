@@ -1,19 +1,10 @@
-import React, { useContext, useEffect } from 'react';
-import { GlobalContext } from '@/hooks/useContext'
-
+import React, { useContext } from 'react';
 import * as S from './styles';
-import * as C from '@/components/index'
+import { GlobalContext } from '@/hooks/useContext'
 
 
 function Cards({ onClick, img }) {
-  const { status, rated } = useContext(GlobalContext)
-
-  // if (!rated) {
-  //   return (
-  //     <S.Skeletoon />
-  //   )
-  // }
-
+  const { rated } = useContext(GlobalContext)
 
   return (
     <>

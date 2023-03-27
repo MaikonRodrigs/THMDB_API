@@ -1,4 +1,4 @@
-import { useCallback, useContext, useState } from 'react';
+import { useCallback, useContext } from 'react';
 import useFetch from '@/hooks/useFetch'
 import { GlobalContext } from '@/hooks/useContext'
 
@@ -14,7 +14,6 @@ export const useFetchTopRated = () => {
   }, [])
 
   return { data, rated, fetchTopRated }
-
 }
 
 export const useFetchSearchMovies = () => {
@@ -28,26 +27,22 @@ export const useFetchSearchMovies = () => {
   }, [])
 
   return { data, movies, fetchAllMovies }
-
 }
 
 export const useFetchMovie = () => {
   const { request, data } = useFetch()
-  const { URL, API_KEY, LANGUAGE, movie, setMovie } = useContext(GlobalContext)
+  const { URL, API_KEY, movie, setMovie } = useContext(GlobalContext)
 
   const fetchMovie = useCallback(async (movie_id) => {
-    // const { json } = await request(`${URL}/movie/${movie_id}${API_KEY}&append_to_response=videos,images&language=${LANGUAGE}`)
     const { json } = await request(`${URL}/movie/${movie_id}${API_KEY}&append_to_response=videos,images`)
     const resultsmovie = json
     setMovie(resultsmovie)
   }, [])
 
   return { data, movie, fetchMovie }
-
 }
 
 export const useFetchImages = () => {
-
   const { request, data } = useFetch()
   const { URL, API_KEY, REGION, images, setImages } = useContext(GlobalContext)
 
@@ -58,5 +53,4 @@ export const useFetchImages = () => {
   }, [])
 
   return { data, images, fetchImage }
-
 }
