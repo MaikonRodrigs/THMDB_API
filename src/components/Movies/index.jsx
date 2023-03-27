@@ -3,9 +3,16 @@ import * as S from './styles';
 
 
 function Movies({
-  img, handleMovie, title, rating, year, playTrailer,
-  description, backClick
+  img, title, backClick, found = 1, founds = 1
 }) {
+
+  function foundLength() {
+    if (found <= 1) {
+     return 'item'
+    } else {
+      return 'items'
+    }
+  }
 
   return (
     <>
@@ -19,8 +26,11 @@ function Movies({
               </S.Title>
             </S.SearchRow>
             <S.SearchItems>
-              <S.SearchIcon />
-              <S.Description>SUA PESQUISA...</S.Description>
+              <S.SectionResults>
+                <S.SearchIcon />
+                <S.Description>SUA PESQUISA...</S.Description>
+              </S.SectionResults>
+              <S.FoundItems> {found} and {founds} {foundLength()} found</S.FoundItems>
             </S.SearchItems>
           </S.Content>
         </S.Row>

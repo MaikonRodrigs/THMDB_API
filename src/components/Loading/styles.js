@@ -73,6 +73,7 @@ export const LoadingTHMDB = styled(Themoviedatabase)`
 export const Wrapper = styled.div`
   width: 100%;
   height: 100px;
+  background: transparent;
 
   display: flex;
   justify-content: center;

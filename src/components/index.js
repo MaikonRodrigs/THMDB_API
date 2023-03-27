@@ -8,6 +8,7 @@ import More from "./More";
 import Tips from "./Tips";
 import WatchTrailer from "./WatchTrailer";
 import Pagination from "./Pagination";
+import Favorites from "./Favorites";
 import { Loading, THMDB } from "./Loading";
 
 export {
@@ -21,6 +22,7 @@ export {
   Tips,
   WatchTrailer,
   Pagination,
+  Favorites,
   Loading,
   THMDB,
 };

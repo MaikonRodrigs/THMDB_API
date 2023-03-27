@@ -5,6 +5,7 @@ import { Heart } from "@styled-icons/evaicons-solid/Heart";
 import { Play2 } from "@styled-icons/icomoon/Play2";
 import { AddCircle } from "@styled-icons/fluentui-system-regular/AddCircle";
 import { Star } from "@styled-icons/boxicons-solid/Star";
+import { Favorite } from "@styled-icons/material-twotone/Favorite";
 
 const LeftFade = keyframes`
   0% {width: 0 }
@@ -16,14 +17,9 @@ const fadeIn = keyframes`
   to { opacity: 1 }
 `;
 
-const opacity = keyframes`
-  0% {opacity: 0 }
-  100% { opacity: 1 }
-`;
 
-const BackgroundFade = keyframes`
-  0% { backdrop-filter: blur(0) }
-  100% { backdrop-filter: blur(2rem)}
+const LikedEffect = keyframes`
+  from { width: 20px } to { width: 40px}
 `;
 
 export const Title = styled.h1`
@@ -128,17 +124,51 @@ export const RandomIcon = styled(Random)`
   }
 `;
 
-export const HeartIcon = styled(Heart)`
+export const RowFavorite = styled.div`
+    width: 56px;
+    height: 37px;
+    position: absolute;
+    right: 34px;
+    top: 30px;
+    border: 1px solid white;
+    border-radius: 18px;
+    padding: 0px 10px 0 12px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+`;
+
+export const HeartIcon = styled(Favorite)`
   width: 20px;
   color: ${({ colorFavoriteIcon }) => (colorFavoriteIcon ? "red" : "white")};
   margin-right: 10px;
   cursor: pointer;
-  position: absolute;
+
+  /* position: absolute;
   right: 40px;
-  top: 40px;
-  &:hover {
-    color: red;
+  top: 40px; */
+
+  &:active {
+    animation: ${LikedEffect} .2s linear;
   }
+
+`;
+
+export const AddCircleIcon = styled(AddCircle)`
+  width: 24px;
+  color: white;
+  /* position: absolute; */
+
+  /* right: 30px; */
+  cursor: pointer;
+
+  &:hover {
+    color: blue;
+  }
+  /* 
+  position: absolute;
+  right: 80px;
+  top: 38px; */
 `;
 
 export const Play2Icon = styled(Play2)`
@@ -161,22 +191,7 @@ export const Play2Icon = styled(Play2)`
   transform: translate(-50%, -50%);
 `;
 
-export const AddCircleIcon = styled(AddCircle)`
-  width: 24px;
-  color: white;
-  position: absolute;
 
-  right: 30px;
-  cursor: pointer;
-
-  &:hover {
-    color: blue;
-  }
-
-  position: absolute;
-  right: 80px;
-  top: 38px;
-`;
 
 export const IFRAME = styled.iframe`
   display: ${({ displayPlay }) => (displayPlay ? "none" : "unset")};
@@ -238,6 +253,8 @@ export const Rated = styled.span`
   right: 743px;
   top: 103px;
 `;
+
+
 
 // export const Contents = styled.section`
 //   position: relative;

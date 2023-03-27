@@ -5,10 +5,14 @@ import * as S from './styles'
 
 import { GlobalContext } from '@/hooks/useContext'
 import { useFetchTopRated, useFetchSearchMovies, useFetchMovie } from '@/services/RequestsApi'
+import { useNavigate } from 'react-router-dom';
 
 
 function Homepage() {
   const [currentPage, setCurrentPage] = useState(1)
+  const [currentFavorite, setCurrentFavorite] = useState('')
+  const [isFavorite, setIsFavorite] = useState(false)
+
   const {
     img_url,
     openMovie, setOpenMovie,
@@ -16,33 +20,53 @@ function Homepage() {
     loading, setLoading,
     current, setCurrent,
     updateBG, setUpdateBG,
-    openPlay, setOpenPlay
+    openPlay, setOpenPlay,
+    status, setStatus,
+    favorites, setFavorites
   } = useContext(GlobalContext)
 
 
   const { rated, fetchTopRated, data, results } = useFetchTopRated()
   const { movies, fetchAllMovies } = useFetchSearchMovies()
   const { movie, fetchMovie } = useFetchMovie()
+  const navigate = useNavigate()
+  const numberpage = currentPage.toString()
 
   useEffect(() => {
 
     fetchTopRated(16, currentPage)
-    // RandomMovies()
     const CurrentRandom = Math.floor(Math.random() * 16);
     setCurrent(CurrentRandom)
 
   }, [currentPage])
 
-  function RandomMovies() {
-    setInterval(() => {
-      handleMovie()
-    }, 10000)
-  }
-
   function handleMovie() {
     const CurrentRandom = Math.floor(Math.random() * 16);
     setCurrent(CurrentRandom)
   }
+
+  function addFavorite() {
+    // fetchMovie(id)
+
+    if (!isFavorite) {
+      setIsFavorite(!isFavorite)
+      setCurrentFavorite(movie?.id)
+      console.log(currentFavorite)
+      console.log(movie?.id)
+      if (currentFavorite === movie?.id) {
+        console.log(favorites)
+        setFavorites((old) => [...old])
+      } else {
+        setFavorites((old) => [...old, movie])
+      }
+    }
+  }
+
+
+  // function clearFavorites() {
+  //   const arr = favorites.pop();
+  //   setFavorites((old) => [...old, arr]
+  // }
 
   function playTrailer(e) {
     e.preventDefault()
@@ -66,7 +90,7 @@ function Homepage() {
     setOpenMovie(!openMovie)
     setUpdateBG(0)
     setOpenPlay(true)
-
+    setIsFavorite(false)
   }
 
   function showModal(id) {
@@ -103,7 +127,13 @@ function Homepage() {
     const page = currentPage + 1
     setCurrentPage(page)
     fetchTopRated(16, currentPage)
+    console.log(currentPage.toString())
     console.log(currentPage)
+    navigate(`/?page=${currentPage}`)
+  }
+
+  if (status) {
+    return (<C.THMDB />)
   }
 
   if (loading) {
@@ -122,10 +152,14 @@ function Homepage() {
             year={rated[current]?.release_date}
             playTrailer={playTrailer}
             description={rated[current]?.overview}
+            onClickPrevious={previousPage}
+            onClickNext={nextPage}
+            readMoreClick={() => handleTMDB(rated[current]?.id)}
+            page={numberpage}
           />
         </S.FirstSeaction>
-        <C.Pagination onClickPrevious={previousPage} onClickNext={nextPage} />
         <S.Cards>
+          {status && <C.Loading />}
           {data && (
             (rated.map((item) => (
               <C.Cards
@@ -153,10 +187,10 @@ function Homepage() {
               displayPlay={openPlay}
               closeClick={closeModal}
               randomClick={randomBackground}
-              favoriteClick
+              favoriteClick={addFavorite}
               addClick={() => handleTMDB(movie.id)}
               playClick={moviePlayTrailer}
-              colorFavoriteIcon={true}
+              colorFavoriteIcon={isFavorite}
               background={img_url + movie?.images?.backdrops[updateBG]?.file_path}
             />
           </>

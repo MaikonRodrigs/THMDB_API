@@ -3,7 +3,7 @@ import { Star } from "@styled-icons/boxicons-solid/Star";
 import { Heart } from "@styled-icons/evaicons-solid/Heart";
 import { Play } from "@styled-icons/foundation/Play";
 import { Random } from "@styled-icons/open-iconic/Random";
-import { LeftArrowAlt } from "@styled-icons/boxicons-solid/LeftArrowAlt";
+import { ReadMore } from "@styled-icons/material-rounded/ReadMore";
 
 const BUTTON = css`
   color: var(--white);
@@ -33,7 +33,7 @@ export const Container = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vmax;
+  width: 100%;
   height: 768px;
   padding-bottom: 15px;
   clip-path: polygon(0% 0, 100% 0%, 100% calc(100% - 120px), 0% 100%);
@@ -43,7 +43,7 @@ export const Row = styled.div`
   position: relative;
   backdrop-filter: blur(0.5rem);
   background-color: rgba(0, 0, 0, 0.7);
-  width: 99.9vmax;
+  /* width: 99.9vmax; */
   height: 768px;
   padding-bottom: 15px;
   clip-path: polygon(0% 0, 100% 0%, 100% calc(100% - 120px), 0% 100%);
@@ -58,6 +58,7 @@ export const Content = styled.div`
 export const Title = styled.h1`
   text-transform: capitalize;
   z-index: 11;
+
   font-size: 60px;
   font-weight: 600;
   /* word-break: keep-all; */
@@ -65,6 +66,15 @@ export const Title = styled.h1`
   opacity: 0.5;
   color: rgba(255, 255, 255, 0.7);
   margin-left: 33px;
+
+  white-space: nowrap;
+  width: 1283px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media screen and (max-width: 1200px) {
+    width: 870px;
+  }
 `;
 
 export const RowInformation = styled.div`
@@ -110,9 +120,10 @@ export const Description = styled.span`
   width: 60%;
   color: white;
   margin-top: 20px;
+  height: 35px;
 
   display: -webkit-box;
-  -webkit-line-clamp: 7;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 `;
@@ -144,3 +155,16 @@ export const RandomIcon = styled(Random)`
   }
 `;
 
+export const ReadMoreIcon = styled(ReadMore)`
+  ${ICONSBUTTONS}
+  border-radius: 99px;
+  padding: 10px;
+  border: 1px solid #fff;
+  margin-left: 0px;
+  cursor: pointer;
+  &:hover {
+    background: #fff;
+    opacity: 0.8;
+    color: black;
+  }
+`;

@@ -6,7 +6,7 @@ import * as C from '@/components/index';
 
 
 function More({ idVideo, display, closeClick, randomClick, rating,
-  favoriteClick, playClick, addClick, background, title, description, colorFavoriteIcon, displayPlay
+  favoriteClick, playClick, addClick, background, title, description, colorFavoriteIcon = false, displayPlay
 }) {
   const { movie } = useContext(GlobalContext)
   const genres = movie.genres
@@ -16,8 +16,10 @@ function More({ idVideo, display, closeClick, randomClick, rating,
       <S.Row background={background}>
         <S.CloseIcon onClick={closeClick} />
         <S.RandomIcon onClick={randomClick} />
-        <S.HeartIcon onClick={favoriteClick} colorFavoriteIcon={colorFavoriteIcon} />
-        <S.AddCircleIcon onClick={addClick} />
+        <S.RowFavorite>
+          <S.HeartIcon onClick={favoriteClick} colorFavoriteIcon={colorFavoriteIcon} />
+          <S.AddCircleIcon onClick={addClick} />
+        </S.RowFavorite>
         <S.Title>{title}</S.Title>
         <S.StarIcon />
         <S.Rated>{rating}%</S.Rated>

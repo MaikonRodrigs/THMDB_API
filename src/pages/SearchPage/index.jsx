@@ -5,11 +5,12 @@ import * as C from '@/components/index';
 
 import { GlobalContext } from '@/hooks/useContext'
 import { useFetchSearchMovies, useFetchMovie } from '@/services/RequestsApi'
+import { MoviesAndTv } from 'styled-icons/fluentui-system-regular';
 
 
 function Search() {
 
-  const { movies, fetchAllMovies } = useFetchSearchMovies()
+  const { data, movies, fetchAllMovies } = useFetchSearchMovies()
   const { movie, fetchMovie } = useFetchMovie()
 
   const {
@@ -27,7 +28,7 @@ function Search() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetchAllMovies(query, 19)
+    fetchAllMovies(query, 16)
   }, [query])
 
   useEffect(() => {
@@ -38,7 +39,7 @@ function Search() {
   }, [])
 
   function handleMovie() {
-    const CurrentRandom = Math.floor(Math.random() * 19);
+    const CurrentRandom = Math.floor(Math.random() * 16);
     setCurrent(CurrentRandom)
   }
 
@@ -101,6 +102,8 @@ function Search() {
           playTrailer={playTrailer}
           description={movies[current]?.overview}
           backClick={handleHomePage}
+          founds={data?.total_results}
+          found={movies?.length}
         />
       </S.FirstSeaction>
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import * as S from './styles';
+import * as C from '@/components/index';
 
 
 function TopRated({ 
-  img, handleMovie, title, rating, year, playTrailer,
-  description
+  img, handleMovie, title, rating, year, playTrailer, page,
+  description, onClickPrevious, onClickNext, readMoreClick
 }) {
 
   return (
@@ -27,8 +28,10 @@ function TopRated({
               <S.WatchTrailer onClick={playTrailer}>
                 <S.PlayIcon />
                 Watch Trailer</S.WatchTrailer>
+                <S.ReadMoreIcon onClick={readMoreClick} />
             </S.Butttons>
             <S.Description>{description}</S.Description>
+          <C.Pagination onClickPrevious={onClickPrevious} onClickNext={onClickNext} page={page}/>
           </S.Content>
         </S.Row>
       </S.Container>
@@ -37,6 +40,3 @@ function TopRated({
 }
 
 export default TopRated;
-
-{/* <S.Banner src={imgBanner} /> */ }
-// const imgBanner = 'https://image.tmdb.org/t/p/original/bLJTjfbZ1c5zSNiAvGYs1Uc82ir.jpg'

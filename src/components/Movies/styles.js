@@ -13,7 +13,7 @@ export const Container = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vmax;
+  width: 100%;
   height: 768px;
   padding-bottom: 15px;
   clip-path: polygon(0% 0, 100% 0%, 100% calc(100% - 120px), 0% 100%);
@@ -23,7 +23,7 @@ export const Row = styled.div`
   position: relative;
   backdrop-filter: blur(0.5rem);
   background-color: rgba(0, 0, 0, 0.7);
-  width: 99.9vmax;
+  /* width: 99.9vmax; */
   height: 768px;
   padding-bottom: 15px;
   clip-path: polygon(0% 0, 100% 0%, 100% calc(100% - 120px), 0% 100%);
@@ -88,8 +88,16 @@ export const SearchRow = styled.div`
   align-items: center;
 `;
 
+export const SectionResults = styled.div``;
+
 export const SearchItems = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
+`;
+
+export const FoundItems = styled.span`
+  font-size: 14px;
+  color: white;
+  margin-right: 40px;
 `;

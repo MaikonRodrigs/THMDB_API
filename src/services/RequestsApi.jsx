@@ -9,17 +9,16 @@ export const useFetchTopRated = () => {
 
   const fetchTopRated = useCallback(async (i = 5, page = 1) => {
     const { json } = await request(`${URL}movie/popular${API_KEY}&page=${page}&language=${LANGUAGE}`)
-    let results = json
     const resulsrateds = json.results.slice(0, `${i}`)
     setRated(resulsrateds)
   }, [])
 
-  return { rated, fetchTopRated, data }
+  return { data, rated, fetchTopRated }
 
 }
 
 export const useFetchSearchMovies = () => {
-  const { request } = useFetch()
+  const { request, data } = useFetch()
   const { URL, API_KEY, LANGUAGE, movies, setMovies } = useContext(GlobalContext)
 
   const fetchAllMovies = useCallback(async (query, i = 5) => {
@@ -28,12 +27,12 @@ export const useFetchSearchMovies = () => {
     setMovies(resulsmovies)
   }, [])
 
-  return { movies, fetchAllMovies }
+  return { data, movies, fetchAllMovies }
 
 }
 
 export const useFetchMovie = () => {
-  const { request } = useFetch()
+  const { request, data } = useFetch()
   const { URL, API_KEY, LANGUAGE, movie, setMovie } = useContext(GlobalContext)
 
   const fetchMovie = useCallback(async (movie_id) => {
@@ -43,13 +42,13 @@ export const useFetchMovie = () => {
     setMovie(resultsmovie)
   }, [])
 
-  return { movie, fetchMovie }
+  return { data, movie, fetchMovie }
 
 }
 
 export const useFetchImages = () => {
 
-  const { request } = useFetch()
+  const { request, data } = useFetch()
   const { URL, API_KEY, REGION, images, setImages } = useContext(GlobalContext)
 
   const fetchImage = useCallback(async (movie_id) => {
@@ -58,6 +57,6 @@ export const useFetchImages = () => {
     setImages(resultsimages)
   }, [])
 
-  return { images, fetchImage }
+  return { data, images, fetchImage }
 
 }

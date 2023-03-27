@@ -1,8 +1,12 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Themoviedatabase } from "@styled-icons/simple-icons/Themoviedatabase";
-import { Heart } from "@styled-icons/evaicons-solid/Heart";
 import { Favorite } from "@styled-icons/material-twotone/Favorite";
 import { ArrowIosDownward } from "@styled-icons/evaicons-solid/ArrowIosDownward";
+import { HeartDislikeCircle } from "@styled-icons/ionicons-sharp/HeartDislikeCircle";
+
+const FadeAppear = keyframes`
+  from { opacity: 0} to { opacity: 1}
+`;
 
 export const Container = styled.div`
   width: 100%;
@@ -55,12 +59,9 @@ export const RowFavorites = styled.div`
 
 export const HeartIcon = styled(Favorite)`
   width: 20px;
-  color: white;
   margin-right: 20px;
   cursor: pointer;
-  /* &:hover {
-    color: red;
-  } */
+  color: ${({ display }) => (display ? "red" : "white")};
 `;
 
 export const ArrowIcon = styled(ArrowIosDownward)`
@@ -68,5 +69,30 @@ export const ArrowIcon = styled(ArrowIosDownward)`
   color: white;
   margin-left: -8px;
   cursor: pointer;
+`;
 
+export const ContainerFavorite = styled.div`
+  display: ${({ display }) => (display ? "unset" : "none")};
+  width: 300px;
+  height: 700px;
+  height: auto;
+  background-color: #fff;
+  border-radius: 8px;
+  position: absolute;
+  top: 70px;
+  box-shadow: var(--shadow);
+
+  animation: ${FadeAppear} 1s ease-in-out;
+`;
+
+export const NotInterestedIcon = styled(HeartDislikeCircle)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 0 auto;
+  padding: 44px 0;
+
+  width: 40px;
+  color: red;
 `;

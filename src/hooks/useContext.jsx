@@ -11,11 +11,16 @@ export const UseDataContext = ({ children }) => {
   const [updateBG, setUpdateBG] = useState(0)
   const [openPlay, setOpenPlay] = useState(true)
 
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [status, setStatus] = useState(null);
+
   const [rated, setRated] = useState([])
   const [movies, setMovies] = useState([])
   const [movie, setMovie] = useState({})
   const [images, setImages] = useState({})
-
+  const [favorites, setFavorites] = useState([])
+  
   const URL = import.meta.env.VITE_API_URL
   const API_KEY = import.meta.env.VITE_API_KEY
   const LANGUAGE = import.meta.env.VITE_API_LANGUAGE
@@ -35,6 +40,10 @@ export const UseDataContext = ({ children }) => {
       setCurrent, current,
       setUpdateBG, updateBG,
       setOpenPlay, openPlay,
+      setData, data,
+      setError, error,
+      setStatus, status,
+      setFavorites, favorites,
       img_url,
       API_KEY,
       URL,
