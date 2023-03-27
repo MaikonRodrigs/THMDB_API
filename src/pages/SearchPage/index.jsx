@@ -20,8 +20,10 @@ function Search() {
     play, setPlay,
     openPlay, setOpenPlay,
     updateBG, setUpdateBG,
-    loading, setLoading
-
+    loading, setLoading,
+    favorites, setFavorites,
+    setIsFavorite, isFavorite,
+    setCurrentFavorite, currentFavorite,
   } = useContext(GlobalContext)
   const [setParams] = useSearchParams()
   const query = setParams.get('id')
@@ -29,6 +31,8 @@ function Search() {
 
   useEffect(() => {
     fetchAllMovies(query, 16)
+    setIsFavorite(false)
+    console.log(isFavorite)
   }, [query])
 
   useEffect(() => {
@@ -56,7 +60,7 @@ function Search() {
     setOpenMovie(!openMovie)
     setUpdateBG(0)
     setOpenPlay(true)
-
+    setIsFavorite(false)
   }
 
   function showModal(id) {
@@ -71,7 +75,7 @@ function Search() {
   function randomBackground() {
     const update = Math.floor(Math.random() * 5);
     setUpdateBG(update)
-    
+
   }
 
   function moviePlayTrailer() {
@@ -84,6 +88,23 @@ function Search() {
       window.open(`https://www.themoviedb.org/movie/${id} target="_blank"`)
       setLoading(false)
     }, 1500)
+  }
+
+
+  function addFavorite() {
+    const localStorageFavorite = localStorage.getItem('__favs')
+    const getFav = (JSON.parse(localStorageFavorite))
+    if (!isFavorite) {
+      setIsFavorite(!isFavorite)
+      setCurrentFavorite(movie?.id)
+      if (currentFavorite === movie?.id) {
+        setFavorites((old) => [...old])
+        localStorage.setItem('__favs', JSON.stringify(movie))
+      } else {
+        setFavorites((old) => [...old, movie])
+        localStorage.setItem('__favs', JSON.stringify(movie))
+      }
+    }
   }
 
   if (loading) {
@@ -108,7 +129,7 @@ function Search() {
       </S.FirstSeaction>
 
       <S.Cards>
-        {movies.length === 0 && <p>Carregando...</p>}
+        {movies.length === 0 && <S.NotFound />}
         {movies.length > 1 && (
           movies.map((item) => (
             <C.Cards
@@ -128,10 +149,10 @@ function Search() {
         displayPlay={openPlay}
         closeClick={closeModal}
         randomClick={randomBackground}
-        favoriteClick
+        favoriteClick={addFavorite}
         addClick={() => handleTMDB(movie.id)}
         playClick={moviePlayTrailer}
-        colorFavoriteIcon={true}
+        colorFavoriteIcon={isFavorite}
         background={img_url + movie?.images?.backdrops[updateBG]?.file_path}
       />
     </S.Container>

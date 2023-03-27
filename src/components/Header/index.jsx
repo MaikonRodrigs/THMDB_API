@@ -14,7 +14,6 @@ function Header() {
 
   const localStorageFavorite = localStorage.getItem('__favs')
   const getFav = (JSON.parse(localStorageFavorite))
-  console.log(getFav)
 
   const { movie, fetchMovie } = useFetchMovie()
 
@@ -37,10 +36,25 @@ function Header() {
   }
 
   function removeFavorite(i) {
-    const arr = favorites.filter((idx) => idx !== i);
-    location.clear()
-    location.reload()
+    const arr = favorites.filter((item, idx) => idx !== i);
     setFavorites(arr)
+    console.log(arr)
+    if (favorites.length === 1) {
+      localStorage.clear()
+      location.reload()
+    }
+  }
+
+  function clearCache() {
+    localStorage.clear()
+    location.reload()
+    setFavorites([])
+  }
+
+  function showModal(id) {
+    fetchMovie(id)
+    setOpenMovie(!openMovie)
+    movieIdOpen(id)
   }
 
   function getIsNull() {
@@ -51,14 +65,9 @@ function Header() {
     } else if (getFav.length === 0) {
       return <S.NotInterestedIcon />
     }
+    console.log(favorites)
   }
 
-
-  function showModal(id) {
-    setOpenMovie(!openMovie)
-    movieIdOpen(id)
-    fetchMovie(id)
-  }
 
   if (loading) {
     return (<C.THMDB />)
@@ -76,16 +85,42 @@ function Header() {
           <C.Profile />
           <S.ContainerFavorite display={display}>
             {getIsNull()}
-            {favorites.length > 0 ?
+
+
+            {favorites && getFav && (
               favorites?.map((items, idx) => (
                 <C.Favorites
                   key={items?.id}
                   title={items?.title}
                   src={img_url + items?.poster_path}
-                  removeClick={() => removeFavorite(idx)}
                   moreClick={() => handleTMDB(items?.id)}
-                  cardClick={() => showModal(movie?.id)}
+                  cardClick={() => showModal(items?.id)}
+                  removeClick={() => removeFavorite(idx)}
+                />
+              ))
+            )}
 
+            {getFav && favorites.length < 1 && (
+              <C.Favorites
+                key={getFav?.id}
+                title={getFav?.title}
+                src={img_url + getFav?.poster_path}
+                removeClick={clearCache}
+                moreClick={() => handleTMDB(getFav?.id)}
+                cardClick={() => showModal(getFav?.id)}
+              />
+            )}
+
+
+            {/* {favorites.length >= 1 || favorites.length != 0 ?
+              favorites?.map((items, idx) => (
+                <C.Favorites
+                  key={items?.id}
+                  title={items?.title}
+                  src={img_url + items?.poster_path}
+                  moreClick={() => handleTMDB(items?.id)}
+                  cardClick={() => showModal(items?.id)}
+                  removeClick={() => removeFavorite(idx)}
                 />
               ))
               :
@@ -93,11 +128,14 @@ function Header() {
                 key={getFav?.id}
                 title={getFav?.title}
                 src={img_url + getFav?.poster_path}
-                removeClick={() => removeFavorite(getFav.id)}
+                removeClick={clearCache}
                 moreClick={() => handleTMDB(getFav?.id)}
-                cardClick={() => showModal(movie?.id)}
+                cardClick={() => showModal(getFav?.id)}
               />
-            }
+            } */}
+
+            {/* ///////// */}
+
             {/* {getFav ?
               <C.Favorites
                 key={getFav?.id}
@@ -117,6 +155,7 @@ function Header() {
                 />
               ))
             } */}
+            <S.DeleteFavorites />
           </S.ContainerFavorite>
         </S.RowSearchAndProfile>
       </S.Row>

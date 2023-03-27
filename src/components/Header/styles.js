@@ -9,6 +9,7 @@ const FadeAppear = keyframes`
 `;
 
 export const Container = styled.div`
+  position: relative;
   width: 100%;
   z-index: 3;
   position: fixed;
@@ -96,4 +97,8 @@ export const NotInterestedIcon = styled(HeartDislikeCircle)`
 
   width: 40px;
   color: red;
+`;
+
+export const DeleteFavorites = styled.div`
+
 `;

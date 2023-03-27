@@ -9,8 +9,6 @@ import { useNavigate } from 'react-router-dom';
 
 function Homepage() {
   const [currentPage, setCurrentPage] = useState(1)
-  const [currentFavorite, setCurrentFavorite] = useState('')
-  const [isFavorite, setIsFavorite] = useState(false)
 
   const {
     img_url,
@@ -21,7 +19,9 @@ function Homepage() {
     updateBG, setUpdateBG,
     openPlay, setOpenPlay,
     status, setStatus,
-    favorites, setFavorites
+    favorites, setFavorites,
+    setIsFavorite, isFavorite,
+    setCurrentFavorite, currentFavorite
   } = useContext(GlobalContext)
 
 

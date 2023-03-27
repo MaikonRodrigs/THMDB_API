@@ -20,7 +20,9 @@ export const UseDataContext = ({ children }) => {
   const [movie, setMovie] = useState({})
   const [images, setImages] = useState({})
   const [favorites, setFavorites] = useState([])
-  
+  const [isFavorite, setIsFavorite] = useState(false)
+  const [currentFavorite, setCurrentFavorite] = useState('')
+
   const URL = import.meta.env.VITE_API_URL
   const API_KEY = import.meta.env.VITE_API_KEY
   const LANGUAGE = import.meta.env.VITE_API_LANGUAGE
@@ -44,6 +46,8 @@ export const UseDataContext = ({ children }) => {
       setError, error,
       setStatus, status,
       setFavorites, favorites,
+      setIsFavorite, isFavorite,
+      setCurrentFavorite, currentFavorite,
       img_url,
       API_KEY,
       URL,

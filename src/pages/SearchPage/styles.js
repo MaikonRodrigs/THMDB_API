@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   height: 100vh;
+  /* position: relative; */
 `;
 
 export const FirstSeaction = styled.section`
@@ -26,5 +27,13 @@ export const Cards = styled.div`
     margin-left: 40px;
     gap: 1.2rem;
     row-gap: 5rem;
+  }
+`;
+
+export const NotFound = styled.div`
+  font-size: 100px;
+  color: white;
+  &::before {
+    content: "404 - not found";
   }
 `;

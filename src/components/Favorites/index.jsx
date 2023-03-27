@@ -1,6 +1,4 @@
 import React from 'react';
-import { GlobalContext } from '@/hooks/useContext'
-import { useFetchSearchMovies, useFetchMovie } from '@/services/RequestsApi'
 
 import * as S from './styles';
 
