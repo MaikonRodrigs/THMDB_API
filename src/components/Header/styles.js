@@ -74,8 +74,9 @@ export const ArrowIcon = styled(ArrowIosDownward)`
 export const ContainerFavorite = styled.div`
   display: ${({ display }) => (display ? "unset" : "none")};
   width: 300px;
-  height: 700px;
-  height: auto;
+  max-height: 700px;
+  overflow: auto;
+  /* height: auto; */
   background-color: #fff;
   border-radius: 8px;
   position: absolute;

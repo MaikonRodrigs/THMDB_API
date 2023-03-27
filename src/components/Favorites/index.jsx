@@ -4,12 +4,12 @@ import { useFetchSearchMovies, useFetchMovie } from '@/services/RequestsApi'
 
 import * as S from './styles';
 
-function Favorites({ src, title, moreClick, removeClick }) {
+function Favorites({ src, title, moreClick, removeClick, cardClick }) {
 
   return (
     <S.Row>
       <S.RowCard>
-        <S.Card src={src} />
+        <S.Card src={src} onClick={cardClick} />
         <S.RowIcons>
           <S.Title>{title}</S.Title>
           <S.Icons>

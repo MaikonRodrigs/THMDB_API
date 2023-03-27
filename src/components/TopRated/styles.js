@@ -4,6 +4,7 @@ import { Heart } from "@styled-icons/evaicons-solid/Heart";
 import { Play } from "@styled-icons/foundation/Play";
 import { Random } from "@styled-icons/open-iconic/Random";
 import { ReadMore } from "@styled-icons/material-rounded/ReadMore";
+import { Add } from "@styled-icons/fluentui-system-filled/Add";
 
 const BUTTON = css`
   color: var(--white);
@@ -134,7 +135,7 @@ export const StarIcon = styled(Star)`
   margin-right: 4px;
 `;
 
-export const LikedIcon = styled(Heart)`
+export const AddIcon = styled(Add)`
   ${ICONSBUTTONS}
 `;
 

@@ -136,6 +136,7 @@ export const RowFavorite = styled.div`
     display: flex;
     align-items: center;
     flex-direction: row;
+    backdrop-filter: blur(1rem);
 `;
 
 export const HeartIcon = styled(Favorite)`

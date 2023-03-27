@@ -5,7 +5,7 @@ import * as C from '@/components/index';
 
 function TopRated({ 
   img, handleMovie, title, rating, year, playTrailer, page,
-  description, onClickPrevious, onClickNext, readMoreClick
+  description, onClickPrevious, onClickNext, readMoreClick, AddClick
 }) {
 
   return (
@@ -21,9 +21,9 @@ function TopRated({
               <S.Year>{year}</S.Year>
             </S.RowInformation>
             <S.Butttons>
-              <S.AddFavorites>
-                <S.LikedIcon />
-                Add Wishlist
+              <S.AddFavorites onClick={AddClick}>
+                <S.AddIcon />
+                View more
               </S.AddFavorites>
               <S.WatchTrailer onClick={playTrailer}>
                 <S.PlayIcon />

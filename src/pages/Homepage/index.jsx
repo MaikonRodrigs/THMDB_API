@@ -7,7 +7,6 @@ import { GlobalContext } from '@/hooks/useContext'
 import { useFetchTopRated, useFetchSearchMovies, useFetchMovie } from '@/services/RequestsApi'
 import { useNavigate } from 'react-router-dom';
 
-
 function Homepage() {
   const [currentPage, setCurrentPage] = useState(1)
   const [currentFavorite, setCurrentFavorite] = useState('')
@@ -32,6 +31,7 @@ function Homepage() {
   const navigate = useNavigate()
   const numberpage = currentPage.toString()
 
+
   useEffect(() => {
 
     fetchTopRated(16, currentPage)
@@ -46,27 +46,20 @@ function Homepage() {
   }
 
   function addFavorite() {
-    // fetchMovie(id)
-
+    const localStorageFavorite = localStorage.getItem('__favs')
+    const getFav = (JSON.parse(localStorageFavorite))
     if (!isFavorite) {
       setIsFavorite(!isFavorite)
       setCurrentFavorite(movie?.id)
-      console.log(currentFavorite)
-      console.log(movie?.id)
       if (currentFavorite === movie?.id) {
-        console.log(favorites)
         setFavorites((old) => [...old])
+        localStorage.setItem('__favs', JSON.stringify(movie))
       } else {
         setFavorites((old) => [...old, movie])
+        localStorage.setItem('__favs', JSON.stringify(movie))
       }
     }
   }
-
-
-  // function clearFavorites() {
-  //   const arr = favorites.pop();
-  //   setFavorites((old) => [...old, arr]
-  // }
 
   function playTrailer(e) {
     e.preventDefault()
@@ -155,6 +148,7 @@ function Homepage() {
             onClickPrevious={previousPage}
             onClickNext={nextPage}
             readMoreClick={() => handleTMDB(rated[current]?.id)}
+            AddClick={() => showModal(rated[current]?.id)}
             page={numberpage}
           />
         </S.FirstSeaction>
